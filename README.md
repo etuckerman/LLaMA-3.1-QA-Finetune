@@ -1,6 +1,6 @@
 # LLaMA 3.1 QA Fine-Tune
 
-This repository provides tools and scripts for fine-tuning the LLaMA 3.1 model using a custom question-answer dataset. The project leverages Hugging Face’s Transformers library, `PEFT`, `LoRA`, and `DeepSpeed` for optimized fine-tuning and inference.
+This repository provides tools and scripts for fine-tuning the LLaMA 3.1 model using a custom question-answer dataset. The project leverages Hugging Face’s Transformers library, `PEFT`, `LoRA`, and `Unsloth` for optimized fine-tuning and inference.
 
 ## Installation
 
@@ -36,20 +36,3 @@ To fine-tune the LLaMA 3.1 model with your dataset, adjust the configuration fil
 
 ```bash
 torchrun --nproc_per_node=2 train.py
-```
-
-## Model Inference
-
-After fine-tuning, you can use the model to generate answers based on the custom question-answer dataset:
-
-```python
-from transformers import AutoModelForCausalLM, AutoTokenizer
-
-model = AutoModelForCausalLM.from_pretrained("path_to_finetuned_model")
-tokenizer = AutoTokenizer.from_pretrained("path_to_tokenizer")
-
-inputs = tokenizer("Your question here", return_tensors="pt")
-outputs = model.generate(**inputs)
-print(tokenizer.decode(outputs[0]))
-```
-Replace "path_to_finetuned_model" and "path_to_tokenizer" with your specific paths.
