@@ -1,0 +1,8 @@
+huggingface_hub
+transformers
+datasets
+accelerate
+peft
+bitsandbytes
+xformers
+sentencepiece
